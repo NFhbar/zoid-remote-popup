@@ -1,0 +1,31 @@
+<head>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css"
+    />
+    <link rel="stylesheet" href="../common/index.css" />
+
+    <script src="../../dist/charge-checkout.frame.js"></script>
+</head>
+
+<body>
+    <h3>Checkout Demo</h3>
+
+    <!-- Container for our zoid component to render into -->
+
+    <div id="container"></div>
+
+    <!-- Container to display the result of the login call -->
+
+    <div id="loginContainer"></div>
+
+    <script>
+        // Render the component and pass down props to the iframe
+
+        Charge.ButtonComponent({
+            env: "demo",
+            prefilledEmail: "This is coming from the parent container!",
+            loginContainer: "#loginContainer"
+        }).render("#container");
+    </script>
+</body>

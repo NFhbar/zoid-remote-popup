@@ -1,0 +1,62 @@
+{
+  "name": "@charge/charge-checkout",
+  "version": "1.0.0",
+  "description": "Javascript module template.",
+  "main": "index.js",
+  "module": "dist/module/index.js",
+  "scripts": {
+    "lint": "eslint src/ test/ *.js",
+    "flow-typed": "rm -rf ./flow-typed && flow-typed install",
+    "flow": "flow",
+    "demo": "echo 'Navigate to http://localhost:1337/demo/iframe/index.htm or http://localhost:1337/demo/popup/index.htm' && serve . -l 1337",
+    "karma": "cross-env NODE_ENV=test babel-node --plugins=transform-es2015-modules-commonjs ./node_modules/karma/bin/karma start",
+    "babel": "babel src/ --out-dir dist/module",
+    "webpack": "babel-node --plugins=transform-es2015-modules-commonjs ./node_modules/.bin/webpack --progress",
+    "test": "npm run lint && npm run flow-typed && npm run flow && npm run karma",
+    "copy": "cp dist/charge-checkout.frame.js demo/checkout/public/js/charge-checkout.frame.js",
+    "build": "npm run babel && npm run webpack && npm run copy",
+    "release": "./publish.sh",
+    "release:patch": "./publish.sh patch",
+    "release:minor": "./publish.sh minor",
+    "release:major": "./publish.sh major",
+    "clean": "rimraf dist coverage",
+    "reinstall": "rimraf flow-typed && rimraf node_modules && npm install && flow-typed install",
+    "debug": "cross-env NODE_ENV=debug"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "browserslist": [
+    "IE >= 9",
+    "chrome >= 27",
+    "firefox >= 30",
+    "safari >= 5",
+    "opera >= 23"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/krakenjs/zoid-demo.git"
+  },
+  "keywords": [
+    "template"
+  ],
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "flow-bin": "^0.81.0",
+    "grumbler-scripts": "^3",
+    "mocha": "^4.0.1",
+    "serve": "^10.1.1"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-export-default-from": "^7.7.4",
+    "jsx-pragmatic": "^1.0.11",
+    "zoid": "^9.0.28"
+  }
+}
